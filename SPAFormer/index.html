@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SPAFormer">
+  <meta name="keywords" content="object assembly, 3D point cloud, Transformers">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPAFormer: Sequential 3D Part Assembly with Transformers</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SPAFormer: Sequential 3D Part Assembly with Transformers</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://xuboshen.github.io">Boshen Xu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://zhengsipeng.github.io">Sipeng Zheng</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.jin-qin.com">Qin Jin</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Renmin University of China,</span>
+            <span class="author-block"><sup>2</sup>Beijing Academy of Artificial Intelligence</span>
+          </div>
+          Published at <a href="https://3dvconf.github.io/2025/">3DV, 2025</a>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.05874"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/xuboshen/SPAFormer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://pan.baidu.com/s/1jzbnmQLz4XkNR0nX7APl9Q?pwd=skb9&_at_=1739098127967#list/path=%2F"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/teaser.jpg" alt="Teaser Image" style="width: 100%; height: auto;">
+      <h2 class="subtitle has-text-centered">
+        SPAFormer efficiently leverages the part geometry and sequence information, achieving significantly more plausible assemblies on our constructed benchmark PartNet-Assembly than other methods.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce SPAFormer, an innovative model designed to overcome the combinatorial explosion challenge in the 3D Part Assembly (3D-PA) task. This task requires accurate prediction of each part's poses in sequential steps.
+As the number of parts increases, the possible assembly combinations increase exponentially, leading to a combinatorial explosion that severely hinders the efficacy of 3D-PA.
+SPAFormer addresses this problem by leveraging weak constraints from assembly sequences, effectively reducing the solution space's complexity. 
+Since the sequence of parts conveys construction rules similar to sentences structured through words, our model explores both parallel and autoregressive generation.
+We further strengthen SPAFormer through knowledge enhancement strategies that utilize the attributes of parts and their sequence information, enabling it to capture the inherent assembly pattern and relationships among sequentially ordered parts.
+We also construct a more challenging benchmark named PartNet-Assembly covering 21 varied categories to more comprehensively validate the effectiveness of SPAFormer. 
+Extensive experiments demonstrate the superior generalization capabilities of SPAFormer, particularly with multi-tasking and in scenarios requiring long-horizon assembly.</p>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Problem -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Problem</h2>
+        <div class="hero-body">
+          <img id="teaser" src="./static/images/combinatorial_explosion.jpg" alt="Method Image" style="width: 130%; height: auto;">
+          <p>
+            Illustration of the combinatorial explosion challenge inherent in the assembly process. Specifically:
+        </p>
+        <ul>
+            <li>
+                (a) For an object composed of \(n\) parts, where we assume each part can occupy one of \(m\) discrete positions, the potential combinations of these parts grow at an extraordinary rate, exceeding \(O(m^n)\) in complexity.
+            </li>
+            <li>
+                (b) The number of constituent parts increases when the target object for assembly becomes more complex.
+            </li>
+        </ul>
+        
+        <!-- MathJax script for rendering LaTeX -->
+        <script type="text/javascript" async
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Method. -->
+    <!-- Paper Method. -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        <div class="hero-body">
+          <img id="teaser" src="./static/images/model_arch_v2.jpg" alt="Method Image" style="width: 130%; height: auto;">
+          <p>
+            Illustration of overall end-to-end framework of SPAFormer. 
+            <ul>
+              <li>
+                (a) The shared 3D backbone extracts the geometry feature of individual parts, followed by
+              </li>
+              <li>
+                (b) knowledge enhancement of part features, which incorporates symmetry, order, and relation information into part features through positional encodings, then generates poses by either
+              </li>
+              <li>
+                (c1) parallel generator, which generates poses of all parts at once, or
+              </li>
+              <li>
+                (c2) autoregressive generator, which decodes poses of parts according to assembly sequences step by step.
+              </li>
+            </ul>  
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Method. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Effect of Encodings</h2>
+          <p>
+            Visualizations of assembly results when enhancing knowledge by adding new encoding patterns in a stepwise way.
+          </p>
+          <img src="./static/images/visualization_ablation.jpg" alt="Effect of Encodings" style="max-width: 100%; height: auto;">
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Real-World</h2>
+          <p>
+            Real-world experiment on table assembly.
+          </p>
+          <img src="./static/images/real-world.jpg" alt="real-world" style="max-width: 100%; height: auto;">
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+    </div>
+    <!--/ Failure cases. -->
+
+
+  </div>
+</section>
+
+
+
+<section class="section">
+    <!-- Exps. -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">More Visualizations</h2>
+        <div class="hero-body">
+          <img id="teaser" src="./static/images/visualization_furniture.jpg" alt="Method Image" style="width: 130%; height: auto;">
+          <p>
+            Qualitative results and comparisons on the chair assembly task. Distinct colors within a single shape denote various parts of the chair, whereas consistent coloring in a row signifies identical parts. Our SPAFormer is able to identify and adhere to appropriate assembly patterns to ensure accurate assembly of structured objects.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Method. -->
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{xu2024spaformersequential3dassembly,
+      title={SPAFormer: Sequential 3D Part Assembly with Transformers}, 
+      author={Boshen Xu and Sipeng Zheng and Qin Jin},
+      year={2024},
+      eprint={2403.05874},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2403.05874}, 
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is inspired by <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

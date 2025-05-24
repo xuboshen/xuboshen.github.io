@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Time-R1">
+  <meta name="keywords" content="object assembly, 3D point cloud, Transformers">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Time-R1: Post-Training Large Vision Language Model for Temporal Video Grounding </title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Time-R1: Post-Training Large Vision Language Model for Temporal Video Grounding</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Ye Wang</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="">Ziheng Wang</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="">Boshen Xu</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="">Yang Du</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Kejun Lin</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Zihan Xiao</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="">Zihao Yue</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Jianzhong Ju</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Liang Zhang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Dingyi Yang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Xiangnan Fang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Zewen He</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Zhenbo Luo</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Wenxuan Wang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Junqi Lin</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Jian Luan</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.jin-qin.com">Qin Jin</a><sup>1&dagger;</sup>,
+            </span>
+          </div>
+          <!-- Add here: insert this block right after the last authors' affiliation block -->
+          <div class="has-text-centered" style="margin-top: 1em;">
+            <p><sup>*</sup>Equal contribution, listed in alphabetical order</p>
+            <p><sup>&dagger;</sup>Corresponding author: Qin Jin (<a href="mailto:jqin@ruc.edu.cn">qjin@ruc.edu.cn</a>)</p>
+          </div>
+
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Renmin University of China,</span>
+            <span class="author-block"><sup>2</sup>Xiaomi Corporation</span>
+            <span class="author-block"><sup>3</sup>Beijing University of Posts and Telecommunications </span>
+
+          </div>
+          <a href="https://arxiv.org/abs/2503.13377">arxiv, 2025</a>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2503.13377"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/www-Ye/TimeZero"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data (TBD)</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/teaser.jpg" alt="Teaser Image" style="width: 100%; height: auto;">
+      <h2 class="subtitle has-text-centered">
+        SPAFormer efficiently leverages the part geometry and sequence information, achieving significantly more plausible assemblies on our constructed benchmark PartNet-Assembly than other methods.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is inspired by <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

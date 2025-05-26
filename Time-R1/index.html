@@ -39,6 +39,11 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
 </head>
 <body>
 
@@ -95,8 +100,8 @@
 
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Renmin University of China,</span>
-            <span class="author-block"><sup>2</sup>Xiaomi Corporation</span>
+            <span class="author-block"><sup>1</sup>AIM3 Lab, Renmin University of China,</span>
+            <span class="author-block"><sup>2</sup>MiLM Plus, Xiaomi Inc.</span>
             <span class="author-block"><sup>3</sup>Beijing University of Posts and Telecommunications </span>
 
           </div>
@@ -130,7 +135,7 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (comming soon in the TimeZero repo)</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -140,7 +145,7 @@
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
-                  <span>Data (TBD)</span>
+                  <span>Data (comming soon)</span>
                   </a>
             </div>
 
@@ -162,10 +167,144 @@
   </div>
 </section> -->
 
+<section class="section" id="abstract">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Abstract</h2>
+    <p>
+      Temporal Video Grounding (TVG), the task of locating specific video segments based on language queries, is a core challenge in long-form video understanding. While recent Large Vision-Language Models (LVLMs) have shown early promise in tackling TVG through supervised fine-tuning (SFT), their ability to generalize remains limited. To address this, we propose a novel post-training framework that enhances the generalization capabilities of LVLMs via reinforcement learning (RL).
+Specifically,  our contributions span three key directions:
+(1) <b>Time-R1</b>: we introduce a reasoning-guided post-training framework via RL with verifiable reward to enhance capabilities of LVLMs on the TVG task. 
+(2) <b>TimeRFT</b>: we explore post-training strategies on our curated RL-friendly dataset, which trains the model to progressively comprehend more difficult samples, leading to better generalization.
+(3) <b>TVGBench</b>: we carefully construct a small but comprehensive and balanced benchmark suitable for LVLM evaluation, which is sourced from available public benchmarks.
+Extensive experiments demonstrate that Time-R1 achieves state-of-the-art performance across multiple downstream datasets using significantly less training data than prior LVLM approaches, while improving its general video understanding capabilities. 
+    </p>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Overall Contributions and Illustration</h2>
+        <!-- Insert Image -->
+    <div class="has-text-centered">
+      <img src="./static/images/TimeR1v2.png" alt="Method Overview" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+      <p class="has-text-centered"><i>Figure: Overview of Time-R1 and its improved case for temporal video grounding, short video QA and long video QA.</i></p>
+    </div>
+    <p>
+      The TVG task aims to temporally localize video segments within long-form videos based on natural language queries.
+      Given a video of duration <span class="math">\( t \)</span> seconds, which is represented as a sequence of <span class="math">\( T \)</span> frames 
+      <span class="math">\( \{x_1,\dots,x_T\} \)</span>, and a language query <span class="math">\( q \)</span>, the goal is to identify the temporal boundaries 
+      <span class="math">\( [t_s, t_e] \)</span> of the segment that best corresponds to <span class="math">\( q \)</span>, where 
+      <span class="math">\( t_s, t_e \in \mathbb{R}^+ \)</span>.
+      In this work, we introduce <strong>Time-R1</strong>, a framework designed to unleash the potential of LVLMs for the TVG task using reinforcement learning (RL).
+    </p>
+
+
+    <ul>
+      <li>
+        <strong>RL-based framework for temporal video grounding.</strong>  
+        We introduce <strong>Time-R1</strong>, a reasoning-enhanced post-training framework via RL with verifiable rewards, where the LVLM first generates chain-of-thought descriptions and then predicts timestamps.
+        The post-training process is optimized using Generalized Reinforcement Policy Optimization (GRPO) with a novel reward function, incorporating both a structured template reward and a timestamp-aware tIoU reward.
+      </li>
+      <li>
+        <strong>Time-aware reinforcement fine-tuning.</strong> 
+        We propose <strong>TimeRFT</strong>, a reinforcement fine-tuning strategy with dynamic hard sampling, which mines hard samples on a curated dataset and progressively selects low-IoU samples for multi-epoch training.
+        To ensure stable reasoning and reduce hallucinations, we adopt a cold-start approach to generate CoT with video captions.
+        To support RL-friendly training, we curate an RFT dataset with difficulty annotations on the TVG task.
+      </li>
+      <li>
+        <strong>Comprehensive benchmark for LVLMs on TVG.</strong>  
+        Existing TVG benchmarks are designed for the large-scale evaluation of small models.
+        Considering the inference speed bottlenecks and general-purpose role of LVLMs, we construct <strong>TVGBench</strong>, a compact yet comprehensive benchmark for TVG. 
+        We carefully balance the video distribution, query distribution, and design specific query semantics to ensure that the benchmark is well-suited for evaluating LVLMs.
+      </li>
+      <li>
+        <strong>State-of-the-Art results and generalization.</strong>  
+        Compared with 7B LVLMs on the temporal video grounding task, our method outperforms all prior SFT-based methods. 
+        After fine-tuning on downstream benchmarks, it surpasses many previous feature-based approaches. 
+        Furthermore, Time-R1 also improves the model's general video understanding on video QA benchmarks.
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
+<section class="section" id="experiments">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Experiments</h2>
+
+    <section id="comparison-subsection">
+      <h3 class="title is-4">Comparison of SoTA on TVG benchmarks</h3>
+
+    <p>
+      We evaluate the temporal video grounding (TVG) performance of <strong>Time-R1</strong> across three benchmarks: 
+      <strong>Charades-STA</strong>, <strong>ActivityNet Captions</strong>, and our proposed <strong>TVGBench</strong>.
+    </p>
+
+    <p>
+      In <span class="has-text-grey">gray<span class="math">\( ^*\)</span></span>, we denote models that are fine-tuned on each benchmark, 
+      while black indicates zero-shot performance. Our comparisons cover existing open-source 7B LVLMs, as well as state-of-the-art video-language pretraining (VLP) models.
+    </p>
+
+    <figure>
+      <img src="./static/images/TABLE1.png" alt="Performance comparison on TVG benchmarks" style="width:100%">
+      <figcaption><strong>Table 1:</strong> Temporal video grounding performance on Charades-STA, ActivityNet, and TVGBench. Models marked in <span class="has-text-grey">gray$^*$</span> are fine-tuned on corresponding benchmarks.</figcaption>
+    </figure>
+
+    <p>
+      As shown in Table 1, <strong>Time-R1</strong> achieves the highest accuracy among LVLM-based methods in both 
+      fine-tuned and zero-shot scenarios. Notably, on TVGBench, our method surpasses all compared baselines 
+      by a large margin, validating its effectiveness in temporal grounding and general video understanding.
+    </p>
+    </section>
+
+    <section id="comparison-subsection">
+      <h3 class="title is-4">Comparison of Post-Training Paradigms</h3>
+
+      <p>
+        We compare different post-training paradigms for large vision-language models (LVLMs) across multiple tasks, including short video QA, long video QA, and temporal video grounding (TVG).
+      </p>
+
+      <p>
+        The methods labeled as <strong>SFT</strong> and <strong>RL</strong> represent full finetuning of the language model, whereas <strong>SFT-LoRA</strong> refers to finetuning with LoRA.
+        The baseline model used for comparison is <strong>Qwen2.5-VL-7B</strong>.
+      </p>
+
+      <figure>
+        <img src="./static/images/post_training.png" alt="Comparison of Post-Training Paradigms" style="width:100%">
+        <figcaption><strong>Table 2:</strong> Performance comparison between post-training paradigms (SFT, RL, SFT-LoRA) on short video QA, long video QA, and TVG tasks.</figcaption>
+      </figure>
+
+      <p>
+        The results highlight that our RL-based approach consistently improves performance across tasks compared to supervised finetuning and LoRA finetuning, demonstrating the effectiveness of reinforcement learning with verifiable rewards in aligning LVLMs to temporal video understanding.
+      </p>
+    </section>
+
+    
+    <section id="ablation-study-subsection">
+      <h3 class="title is-4">Ablation Study</h3>
+
+
+      <p>
+        both Gaussian Filtering (GF) and Multi-Epoch training (ME) individually improve performance, with ME yielding a more substantial gain, improving from R1@0.7 of 13.2 in row 1 to 14.2 in row 4.
+Notably, the combination of tIoU supervision and ME (Row 6) leads to a significant boost across all metrics. 
+As more components are added, GF and ME (Row 7), followed by Sample Filtering (SF) in Row 8, the performance continues to  improve, ultimately reaching R1@0.5 of 29.4 and R1@0.7 of 16.4.
+      </p>
+
+      <figure>
+        <img src="./static/images/ablation.png" alt="Ablation Study of Post-Training Paradigms" style="width:100%">
+        <figcaption><strong>Table 2:</strong> Ablation of Time-R1-7B trainning.
+GF, ME, SF refers to Gaussian Filtering, Multi-Epoch, and Sample Filtering per epoch, respectively.</figcaption>
+      </figure>
+
+    </section>
+  </div>
+</section>
 
 
 
 
+<!-- 
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -173,8 +312,7 @@
     <pre><code>@inproceedings{
 }</code></pre>
   </div>
-</section>
-
+</section> -->
 
 <footer class="footer">
   <div class="container">

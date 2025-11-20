@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Time-R1">
+  <meta name="keywords" content="object assembly, 3D point cloud, Transformers">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> TimeViper: A Hybrid Mamba-Transformer Vision-Language Model for Efficient Long Video Understanding </title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">TimeViper: A Hybrid Mamba-Transformer Vision-Language Model for Efficient Long Video Understanding</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Boshen Xu</a><sup>1*&ddagger;</sup>,</span>
+            <span class="author-block">
+              <a href="">Zihan Xiao</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="">Jiaze Li</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Jianzhong Ju</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Zhenbo Luo</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Jian Luan</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.jin-qin.com">Qin Jin</a><sup>1&dagger;</sup>,
+            </span>
+          </div>
+
+          <div class="has-text-centered" style="margin-top: 1em;">
+            <p><sup>*</sup>Equal contribution; <sup>&ddagger;</sup>Project Lead</p>
+            <p><sup>&dagger;</sup>Corresponding author: Qin Jin (<a href="mailto:qjin@ruc.edu.cn">qjin@ruc.edu.cn</a>)</p>
+          </div>
+
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>AIM3 Lab, Renmin University of China,</span>
+            <span class="author-block"><sup>2</sup>MiLM Plus, Xiaomi Inc.</span>
+
+          </div>
+          <a href="https://arxiv.org/abs/2503.13377">arxiv, 2025</a>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/xiaomi-research/timeviper"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/collections/Boshenxx/time-r1-683d65a07b5736f7168bc602"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Model (TBD)</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/teaser.jpg" alt="Teaser Image" style="width: 100%; height: auto;">
+      <h2 class="subtitle has-text-centered">
+        SPAFormer efficiently leverages the part geometry and sequence information, achieving significantly more plausible assemblies on our constructed benchmark PartNet-Assembly than other methods.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Abstract</h2>
+    <p>
+<p>
+  We introduce <strong>TimeViper</strong>, a hybrid vision-language model designed to tackle challenges of long video understanding.
+  Processing long videos demands both an efficient model architecture and an effective mechanism for handling extended temporal contexts.
+  To this end, TimeViper adopts a hybrid Mamba-Transformer backbone that combines the efficiency of state-space models with the expressivity of attention mechanisms.
+</p>
+
+<p>
+  Through this hybrid design, we reveal the <em>vision-to-text information aggregation phenomenon</em>, where information progressively flows from visual tokens to textual tokens across increasing LLM depth, resulting in <em>severe vision token redundancy</em>.
+  Motivated by this observation, we propose <strong>TransV</strong>, a token information transfer module that transfers and compresses vision tokens into instruction tokens while maintaining multimodal understanding capabilities.
+</p>
+
+<p>
+  This design enables TimeViper to process hour-long videos exceeding 10,000 frames.
+  Extensive experiments across multiple benchmarks demonstrate that TimeViper competes with state-of-the-art models while extending input length.
+  We further analyze attention behaviors of both Mamba and Transformer layers, offering new insights into hybrid model interpretability.
+</p>
+
+<p>
+  This work represents an initial step towards <strong>developing</strong>, <strong>interpreting</strong>, and <strong>compressing</strong> hybrid Mamba-Transformer architectures.
+</p>
+    </p>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Overall Contributions and Illustration</h2>
+        <!-- Insert Image -->
+    <div class="has-text-centered">
+      <img src="./static/images/fig1-teaser-v1-nologo.png" alt="Method Overview" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+      <p class="has-text-centered"><i>Figure: Overview of Time-R1 and its improved case for temporal video grounding, short video QA and long video QA.</i></p>
+    </div>
+    <p>
+      <p>
+  We present <strong>TimeViper</strong>, a hybrid Mamba-Transformer vision-language model for efficient long video understanding.
+  We reveal the severe vision token redundancy and a vision-to-text information aggregation phenomenon in hybrid models.
+</p>
+
+<p>
+  To this end, we introduce <strong>TransV</strong>, the first token-transfer module that compresses vision tokens into text tokens inside the LLM.
+  Benefitting from the Mamba layers' <span style="white-space: nowrap;">O(n)</span> computation and <span style="white-space: nowrap;">O(1)</span> cache cost, TimeViper generates 40.1% more tokens per second than Qwen3 when processing 32k input tokens (approximately 2k frames at 16 tokens per frame) and producing 1k output tokens with batch size 32.
+</p>
+
+<p>
+  Across public benchmarks, TimeViper delivers performance competitive with current Transformer-based MLLMs, including multi-choice QA on VideoMME, temporal video grounding on Charades, video detailed captioning on VDC, and hour-long video understanding on LVBench.
+</p>
+    </p>
+
+
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Method Overview</h2>
+
+    <!-- Insert Image -->
+    <div>
+      <img src="./static/images/fig2-method.png" alt="Method Overview" 
+           style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+      <p>
+          Illustration of TimeViper, our proposed hybrid MLLM for long video understanding.
+          The model consists of a ViT visual encoder, a projector with token merging, 
+          and a hybrid Mamba-Transformer LLM equipped with TransV. 
+          The token merging compresses each frame into 16 vision tokens. 
+      </p>
+      <p>
+          Inside the LLM, TransV transfers information from redundant vision tokens to instruction tokens 
+          to reduce the number of vision tokens. 
+          Specifically, TransV uniformly drops vision tokens in shallow layers 
+          and removes low-attention vision tokens in deeper layers. 
+          The compression module is implemented through a Gated Cross-Attention mechanism 
+          with adaptive learnable weights. 
+          Note that TransV is illustrated before the attention layer for clarity, 
+          though it may be applied before any layer in practice.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="main-results">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Main Quantitative Results</h2>
+
+    <!-- Insert Image -->
+    <div>
+      <img src="./static/images/main_results.png" alt="Main Results"
+           style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+      <p>
+        <strong>TimeViper achieves competitive performance with state-of-the-art models across video understanding benchmarks.</strong>
+      </p>
+
+      <p>
+        <em>For MCQ tasks</em>, despite not fine-tuning ViT, TimeViper with TransV achieves an average accuracy of 55.9 on VideoMME, +0.4 points higher than Video-XL (55.5), which compresses tokens into new ones within Qwen2.
+      </p>
+
+      <p>
+        <em>For VDC task</em>, TimeViper achieves strong performance with an accuracy of 39.7, exceeding the task-specific model Auroracap by +39.1 points.
+      </p>
+
+      <p>
+        <em>For TVG task</em>, TimeViper establishes a surprisingly strong baseline of 42.6 mIoU on Charades, significantly outperforming the task-specific model VTimeLLM-13B, which achieves 34.6 mIoU.
+        This is particularly notable because TimeViper uses only SigLIP positional embedding for vision tokens and relies on the implicit temporal modeling of Mamba layers.
+        Yet the model learns robust temporal alignments between videos and language query, matching or exceeding prior models such as Qwen2.5-VL-7B that explicitly employ MRoPE for fine-grained timestamp modeling.
+      </p>
+
+      <p>
+        These results collectively demonstrate that hybrid Mamba-Transformer architectures are highly competitive for long video understanding.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="analysis-attn">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Attention Score Matrix Analysis</h2>
+
+    <!-- Insert Image -->
+    <div>
+      <img src="./static/images/fig5-matrix.png" alt="Attention Matrix Visualization"
+           style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+      <p>
+          Illustration of attention score matrices in Nanov2 and Qwen2.5 at shallow and deep layers.
+          White lines divide the input sequence into four distinct segments:
+          system prompt, vision tokens, user instruction, and the generated response.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="case-study">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Qualitative Case Studies</h2>
+
+    <!-- Insert Image -->
+    <div>
+      <img src="./static/images/case_study.png" alt="Qualitative Case Studies"
+           style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 8px;">
+
+      <p>
+        Qualitative results of TimeViper on three long video understanding tasks.
+        (1) MCQ: The model demonstrates reasoning capability by correctly answering a multi-choice question about the video's content.
+        (2) TVG: It accurately localizes the temporal boundaries for a specific event, achieving an IoU of 0.75.
+        (3) VDC: The model generates a detailed description that showcases its fine-grained comprehension.
+        Green text highlights accurate detailed descriptions. Some output in the middle is omitted for brevity.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- <section class="section" id="experiments">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Experiments</h2>
+
+    <section id="comparison-subsection">
+      <h3 class="title is-4">Comparison of SoTA on TVG benchmarks</h3>
+
+    <p>
+      We evaluate the temporal video grounding (TVG) performance of <strong>Time-R1</strong> across three benchmarks: 
+      <strong>Charades-STA</strong>, <strong>ActivityNet Captions</strong>, and our proposed <strong>TVGBench</strong>.
+    </p>
+
+    <p>
+      In <span class="has-text-grey">gray<span class="math">\( ^*\)</span></span>, we denote models that are fine-tuned on each benchmark, 
+      while black indicates zero-shot performance. Our comparisons cover existing open-source 7B LVLMs, as well as state-of-the-art video-language pretraining (VLP) models.
+    </p>
+
+    <figure>
+      <img src="./static/images/TABLE1.png" alt="Performance comparison on TVG benchmarks" style="width:100%">
+      <figcaption><strong>Table 1:</strong> Temporal video grounding performance on Charades-STA, ActivityNet, and TVGBench. Models marked in <span class="has-text-grey">gray$^*$</span> are fine-tuned on corresponding benchmarks.</figcaption>
+    </figure>
+
+    <p>
+      As shown in Table 1, <strong>Time-R1</strong> achieves the highest accuracy among LVLM-based methods in both 
+      fine-tuned and zero-shot scenarios. Notably, on TVGBench, our method surpasses all compared baselines 
+      by a large margin, validating its effectiveness in temporal grounding and general video understanding.
+    </p>
+    </section>
+
+    <section id="comparison-subsection">
+      <h3 class="title is-4">Comparison of Post-Training Paradigms</h3>
+
+      <p>
+        We compare different post-training paradigms for large vision-language models (LVLMs) across multiple tasks, including short video QA, long video QA, and temporal video grounding (TVG).
+      </p>
+
+      <p>
+        The methods labeled as <strong>SFT</strong> and <strong>RL</strong> represent full finetuning of the language model, whereas <strong>SFT-LoRA</strong> refers to finetuning with LoRA.
+        The baseline model used for comparison is <strong>Qwen2.5-VL-7B</strong>.
+      </p>
+
+      <figure>
+        <img src="./static/images/post_training.png" alt="Comparison of Post-Training Paradigms" style="width:100%">
+        <figcaption><strong>Table 2:</strong> Performance comparison between post-training paradigms (SFT, RL, SFT-LoRA) on short video QA, long video QA, and TVG tasks.</figcaption>
+      </figure>
+
+      <p>
+        The results highlight that our RL-based approach consistently improves performance across tasks compared to supervised finetuning and LoRA finetuning, demonstrating the effectiveness of reinforcement learning with verifiable rewards in aligning LVLMs to temporal video understanding.
+      </p>
+    </section>
+
+    
+    <section id="ablation-study-subsection">
+      <h3 class="title is-4">Ablation Study</h3>
+
+
+      <p>
+        both Gaussian Filtering (GF) and Multi-Epoch training (ME) individually improve performance, with ME yielding a more substantial gain, improving from R1@0.7 of 13.2 in row 1 to 14.2 in row 4.
+Notably, the combination of tIoU supervision and ME (Row 6) leads to a significant boost across all metrics. 
+As more components are added, GF and ME (Row 7), followed by Sample Filtering (SF) in Row 8, the performance continues to  improve, ultimately reaching R1@0.5 of 29.4 and R1@0.7 of 16.4.
+      </p>
+
+      <figure>
+        <img src="./static/images/ablation.png" alt="Ablation Study of Post-Training Paradigms" style="width:100%">
+        <figcaption><strong>Table 2:</strong> Ablation of Time-R1-7B trainning.
+GF, ME, SF refers to Gaussian Filtering, Multi-Epoch, and Sample Filtering per epoch, respectively.</figcaption>
+      </figure>
+
+    </section> -->
+  <!-- </div>
+</section> -->
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{xu2025timeviper,
+  title={TimeViper: A Hybrid Mamba-Transformer Model for Efficient Long Video Understanding},
+  author={Xu, Boshen and Xiao, Zihan and Li, Jiaze and Ju, Jianzhong and Luo, Zhenbo and Luan, Jian and Jin, Qin},
+  journal={arXiv preprint arXiv:xxxx.xxxxx},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is inspired by <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

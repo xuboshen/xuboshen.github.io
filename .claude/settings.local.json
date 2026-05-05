@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:zhuanlan.zhihu.com)",
+      "Bash(ls:*)",
+      "WebSearch",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(cp:*)",
+      "Bash(pip install:*)",
+      "Bash(grep -qw \"$f\")",
+      "Bash(then)",
+      "Bash(rm \"$f\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(__NEW_LINE_c3998116ee255310__ echo \"Remaining files:\")",
+      "Read(//d/BaiduNetdiskDownload/**)",
+      "Bash(cd:*)",
+      "Bash(gh api:*)",
+      "WebFetch(domain:xuboshen.github.io)",
+      "Bash(sed:*)"
+    ]
+  }
+}

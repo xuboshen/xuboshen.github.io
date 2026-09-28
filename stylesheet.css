@@ -91,7 +91,7 @@
   }
   
   h2 {
-    margin: 0;
+    margin: 10px 0 0 0;
     font-weight: normal;
     font-family: 'Lato', Verdana, Helvetica, sans-serif;
     font-size: 22px;
@@ -143,16 +143,45 @@
     line-height: 1.8;
   }
 
+  .sectionlist {
+    padding: 0 20px;
+  }
+
+  .sectionlist ul {
+    margin: 0 0 20px 0;
+  }
+
   ul li {
     margin-bottom: 4px;
   }
 
   img.hoverZoomLink {
     border-radius: 12px;
+    box-shadow: 1px 1px 4px #444;
   }
 
   .pub-note {
     font-size: 13px;
     color: #666;
     margin-top: 4px;
+  }
+
+  h3 {
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #eee;
+  }
+
+  td.paperimg {
+    text-align: center;
+  }
+
+  td.paperimg img {
+    width: 248px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px #444;
   }

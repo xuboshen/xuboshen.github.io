@@ -13,25 +13,24 @@
   </head>
 
   <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <td style="padding:2.5% 2.5% 0 2.5%;width:63%;vertical-align:middle">
                 <p class="name" style="text-align: center;">
                   Boshen Xu
                 </p>
                 <h2>About</h2>
                 <!-- <p> My research interests include video understanding (e.g., action recognition, vision-language pretraining, long-form video grounding, etc.) and embodied AI (e.g., 3D object assembly, 3D HOI reconstruction, etc.). I'm currently focusing on long video understanding and multi-modal large language models. -->
                   <!-- </p> -->
-                <p>I am a third-year PhD student at <a href="http://info.ruc.edu.cn/index.htm">Renmin University of China (RUC)</a> under the supervision of Professor <a href="https://www.jin-qin.com/">Qin Jin</a> at <a href="https://www.ruc-aim3.com/">AIM3 Lab</a>.
+                <p>I am a fourth-year PhD student at <a href="http://info.ruc.edu.cn/index.htm">Renmin University of China (RUC)</a> under the supervision of Professor <a href="https://www.jin-qin.com/">Qin Jin</a> at <a href="https://www.ruc-aim3.com/">AIM3 Lab</a>.
                   Previously, I obtained my bachelor's degree from <a href="https://www.scse.uestc.edu.cn/">School of Computer Science and Engineering</a>, <a href="https://www.uestc.edu.cn/">University of Electronic Science and Technology of China (UESTC)</a>.
-                  My research interests center around computer vision and vision-and-language.
-                  
                 </p>
                 <p style="text-align:center">
                   <a href="mailto:boshenx@ruc.edu.cn">Email</a> &nbsp;/&nbsp;
+                  <a href="images/wechat-qr.jpg" target="_blank">WeChat</a> &nbsp;/&nbsp;
                   <!-- <a href="data/BoshenXu-CV.pdf">CV</a> &nbsp;/&nbsp; -->
                   <!-- <a href="data/BoshenXu-bio.txt">Bio</a> &nbsp;/&nbsp; -->
                   <!-- <a href="https://scholar.google.com/citations?hl=en&user=jktWnL8AAAAJ">Google Scholar</a> &nbsp;/&nbsp; -->
@@ -40,16 +39,23 @@
                   <a href="https://scholar.google.com/citations?user=K2BnqoIAAAAJ&hl=zh-CN">Google Scholar</a>
                 </p>
               </td>
-              <td style="padding:2.5%;width:40%;max-width:40%">
+              <td style="padding:2.5% 2.5% 0 2.5%;width:25%;max-width:25%">
                 <a href="images/xuboshen.jpg"><img style="width:100%;max-width:100%" alt="profile photo" src="images/xuboshen.jpg" class="hoverZoomLink"></a>
               </td>
             </tr>
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
               <tr>
-              <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Publications</h2>
-                <p class="pub-note">*: equal contributions. &dagger;: corresponding author. &ddagger;: project lead.</p>
+              <td style="padding:20px 20px 8px 20px;width:100%;vertical-align:middle">
+                <h2>Research</h2>
+                <p>My research interests center around computer vision, vision-and-language, and LLM/VLM agents.
+                  In particular, I work on:
+                </p>
+                <ul>
+                  <li><strong>Multimodal agents.</strong> More recently, I have been exploring general-purpose agents, systems that can perceive, reason, and act across open-ended tasks and environments. Besides, I focus on visual content understanding and generation that is programmable and expressed as code, aiming to find representations that are more token-efficient for LLMs, that enhance models' foundational capabilities, and that are more editable for productivity scenarios.</li>
+                  <li><strong>Video understanding.</strong> Video is the continuous projection of the four-dimensional spatio-temporal world onto a two-dimensional plane. Correspondingly, I have studied video from three perspectives: performing complex visual reasoning and content understanding over its rich semantics; learning knowledge of the world and 3D representations from its visual content; and building long-context model architectures that are both fast and accurate.</li>
+                  <li><strong>Human-environment interaction.</strong> Human-environment interaction embodies rich knowledge of interaction, motion, and physics. I have focused on learning generalizable representations from first-person (egocentric) video, with two goals in mind: empowering VR/AR glasses with egocentric understanding to serve as an everyday AI assistant, and building robots with human-like capabilities. I have also briefly studied 3D human-object interaction modeling: building image-to-3D models that produce explicit 3D representations, which can support robot data construction and real-world operation in VR/AR.</li>
+                </ul>
                 <!-- <p>
                   I'm interested in 2D vision, 3D vision and embodied AI. 
                   Representative papers are <span class="highlight">highlighted</span>.
@@ -59,9 +65,14 @@
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           
+            <tr>
+              <td colspan="2" style="padding:0 20px;">
+                <h3 style="margin:5px 0 0;">Multimodal Large Language Models</h3>
+              </td>
+            </tr>
             <!-- TimeViper -->
             <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
                 <img src="images/timeviper.png" alt="TimeViper" width="248" height="100.83" align="center">
               </td>
               <td width="75%" valign="middle">
@@ -75,16 +86,16 @@
                 <br>
                 <em>CVPR</em>, 2026
                 <br>
-                <a href="https://xuboshen.github.io/TimeViper/">project page</a> /
-                <a href="https://github.com/xiaomi-research/timeviper">code</a> /
-                <a href="https://arxiv.org/abs/2511.16595">arxiv</a>
+                <a href="https://xuboshen.github.io/TimeViper/">project page</a> &nbsp;/&nbsp;
+                <a href="https://github.com/xiaomi-research/timeviper">code</a> &nbsp;/&nbsp;
+                <a href="https://arxiv.org/abs/2511.16595">arxiv</a> &nbsp;/&nbsp; <a href="storage/CVPR26-xbs-poster-revised.pdf">poster</a>
                 <p>We introduce <strong>TimeViper</strong>, a hybrid vision-language model for long video understanding. This work represents an initial step towards developing, interpreting, and compressing hybrid Mamba-Transformer architectures.</p>
               </td>
             </tr>
             <!--/ Time-R1 -->
             <!-- Time-R1 -->
             <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
                 <img src="images/TimeR1_comparison.png" alt="Time-R1" width="248" height="134.72" align="center">
               </td>
               <td width="75%" valign="middle">
@@ -98,9 +109,9 @@
                 <br>
                 <em>NeurIPS</em>, 2025
                 <br>
-                <a href="https://xuboshen.github.io/Time-R1/">project page</a> /
-                <a href="https://github.com/xiaomi-research/time-r1">code</a> /
-                <a href="https://arxiv.org/abs/2503.13377v2">arxiv</a> /
+                <a href="https://xuboshen.github.io/Time-R1/">project page</a> &nbsp;/&nbsp;
+                <a href="https://github.com/xiaomi-research/time-r1">code</a> &nbsp;/&nbsp;
+                <a href="https://arxiv.org/abs/2503.13377v2">arxiv</a> &nbsp;/&nbsp;
                 <a href="storage/TimeR1_neurips_2025-xbs.pdf">slides</a>
                 <p>We introduce <strong>Time-R1</strong> framework, <strong>TimeRFT</strong> training, and <strong>TVGBench</strong> for LVLM evaluation, to advance the field of using LVLM for temporal video grounding.
                   Time-R1 achieves state-of-the-art performance on TVG using only 2.5K data for RL fine-tuning, with improved performance on 4 VQA benchmarks.</p>
@@ -108,31 +119,9 @@
             </tr>
             <!--/ Time-R1 -->
 
-            <!-- EgoDTM -->
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <img src="images/EgoDTM_comparison.png" alt="EgoDTM" width="248" height="138.30" align="center">
-              </td>
-              <td width="75%" valign="middle">
-                <span class="papertitle">
-                  <a href="http://arxiv.org/abs/2503.15470">EgoDTM: Towards 3D-Aware Egocentric Video-Language Pretraining</a>
-                </span>
-                <br>
-                <strong>Boshen Xu</strong>, <a href="https://openreview.net/profile?id=~Yuting_Mei2">Yuting Mei</a>, <a href="https://openreview.net/profile?id=~liu_xinbi1">Xinbi Liu</a>, <a href="http://zhengsipeng.github.io/">Sipeng Zheng</a>, <a href="http://www.jin-qin.com/">Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup></a>
-                <br>
-                <em>NeurIPS</em>, 2025
-                <br>
-                <a href="https://github.com/xuboshen/EgoDTM">code</a> /
-                <a href="http://arxiv.org/abs/2503.15470">arxiv</a> /
-                <a href="storage/EgoDTM_neurips_2025-xbs.pdf">slides</a>
-                <p>We introduce <strong>EgoDTM</strong>, an Egocentric Depth- and Text-aware Model that bridges the gap between 2D visual understanding and 3D spatial awareness.</p>
-              </td>
-            </tr>
-            <!--/ EgoDTM -->
-
             <!-- timezero -->
             <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
                 <img src="images/TimeZero_comps.png" alt="TimeZero" width="248" height="155.57" align="center">
               </td>
               <td width="75%" valign="middle">
@@ -145,16 +134,57 @@
                 <br>
                 <em>CVPRW</em>, 2025
                 <br>
-                <a href="https://github.com/www-Ye/TimeZero">code</a> /
+                <a href="https://github.com/www-Ye/TimeZero">code</a> &nbsp;/&nbsp;
                 <a href="http://arxiv.org/abs/2503.13377v1">arxiv</a>
                 <p>We propose <strong>TimeZero</strong>, a reasoning-guided LVLM for temporal video grounding that extends inference through reinforcement learning to reason about video-language relationships. Achieves state-of-the-art performance on Charades-STA benchmark.</p>
               </td>
             </tr>
             <!--/ timezero -->
 
+            <tr>
+              <td colspan="2" style="padding:20px;">
+                <ul style="margin:0;">
+                  <li><strong>EventLens: Event-Structure Reinforcement Learning for Video Understanding</strong>, Guowen Zhang, <strong>Boshen Xu</strong>, Zihao Yue, Ziheng Wang, Xiaokun Liu, Xin Tao, Wenyu Qin, Pengfei Wan, Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup>. <em>NeurIPS</em>, 2026.</li>
+                  <li><strong>Depth as Verifiable Geometric Feedback: Enhancing Spatial Reasoning in Multimodal Large Language Models</strong>, Yepeng Zhang, Ruohang Xu, Zihao Yue, <strong>Boshen Xu</strong>, Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup>. <em>EMNLP Findings</em>, 2026.</li>
+                  <li><strong>Video-OPD: Efficient Post-Training of Multimodal Large Language Models for Temporal Video Grounding via On-Policy Distillation</strong>, Jiaze Li, Hao Yin, Haoran Xu, <strong>Boshen Xu</strong>, Wenhui Tan, Zewen He, Jianzhong Ju, Zhenbo Luo, Jian Luan. <em>ICML</em>, 2026. <a href="https://arxiv.org/abs/2602.02994">arxiv</a></li>
+                  <li><strong>Revisor: Beyond Textual Reflection, Towards Multimodal Introspective Reasoning in Long-Form Video Understanding</strong>, Jiaze Li, Hao Yin, Wenhui Tan, Jingyang Chen, <strong>Boshen Xu</strong>, Yuxun Qu, Yijing Chen, Jianzhong Ju, Zhenbo Luo, Jian Luan. <em>CVPR</em>, 2026. <a href="https://openaccess.thecvf.com/content/CVPR2026/html/Li_REVISOR_Beyond_Textual_Reflection_Towards_Multimodal_Introspective_Reasoning_in_Long-Form_CVPR_2026_paper.html">paper</a></li>
+                  <li><strong>Unveiling Visual Biases in Audio-Visual Localization Benchmarks</strong>, Liangyu Chen, Zihao Yue, <strong>Boshen Xu</strong>, Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup>. <em>ECCV AVGenL Workshop</em>, 2024. <a href="https://arxiv.org/pdf/2409.06709">arxiv</a></li>
+                  <li><strong>StreamPro: From Reactive Perception to Proactive Decision-Making in Streaming Video</strong>, Ao Li, Zihan Xiao, Zihao Yue, <strong>Boshen Xu</strong>, Linli Yao, Jiaze Li, Pei Fu, Jianzhong Ju, Jian Luan, Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup>. <em>arXiv</em>, 2026. <a href="https://arxiv.org/abs/2605.16381">arxiv</a></li>
+                  <li><strong>Xiaomi MiMo-VL-Miloco Technical Report</strong>, Jiaze Li, Jingyang Chen, Yuxun Qu, Shijie Xu, Zhenru Lin, Junyou Zhu, <strong>Boshen Xu</strong>, Wenhui Tan, Pei Fu, Jianzhong Ju, Zhenbo Luo, Jian Luan. <em>arXiv</em>, 2025. <a href="https://arxiv.org/abs/2512.17436">arxiv</a> &nbsp;/&nbsp; <a href="https://github.com/XiaoMi/xiaomi-mimo-vl-miloco">code</a></li>
+                </ul>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2" style="padding:10px 20px;">
+                <h3 style="margin:15px 0 0;">Human-Object Interaction Understanding</h3>
+              </td>
+            </tr>
+            <!-- EgoDTM -->
+            <tr>
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
+                <img src="images/EgoDTM_comparison.png" alt="EgoDTM" width="248" height="138.30" align="center">
+              </td>
+              <td width="75%" valign="middle">
+                <span class="papertitle">
+                  <a href="http://arxiv.org/abs/2503.15470">EgoDTM: Towards 3D-Aware Egocentric Video-Language Pretraining</a>
+                </span>
+                <br>
+                <strong>Boshen Xu</strong>, <a href="https://openreview.net/profile?id=~Yuting_Mei2">Yuting Mei</a>, <a href="https://openreview.net/profile?id=~liu_xinbi1">Xinbi Liu</a>, <a href="http://zhengsipeng.github.io/">Sipeng Zheng</a>, <a href="http://www.jin-qin.com/">Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup></a>
+                <br>
+                <em>NeurIPS</em>, 2025
+                <br>
+                <a href="https://github.com/xuboshen/EgoDTM">code</a> &nbsp;/&nbsp;
+                <a href="http://arxiv.org/abs/2503.15470">arxiv</a> &nbsp;/&nbsp; <a href="storage/NeurIPS2025-xbs-EgoDTM1.pdf">poster</a> &nbsp;/&nbsp;
+                <a href="storage/EgoDTM_neurips_2025-xbs.pdf">slides</a>
+                <p>We introduce <strong>EgoDTM</strong>, an Egocentric Depth- and Text-aware Model that bridges the gap between 2D visual understanding and 3D spatial awareness.</p>
+              </td>
+            </tr>
+            <!--/ EgoDTM -->
+
             <!-- ICLR2025 -->
             <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
                 <img src="images/framework_egonce_plus.png" alt="EgoNCE++" width="248" height="113" align="center">
               </td>
               <td width="75%" valign="middle">
@@ -170,69 +200,14 @@
                 <!-- /
                 <a href="https://dl.acm.org/doi/10.1145/3581783.3612484">paper</a> -->
                 <!-- / -->
-                <a href="https://github.com/xuboshen/EgoNCEpp">code</a>
-                /
-                <a href="https://openreview.net/pdf?id=M8gXSFGkn2">paper</a>
-                /
-                <a href="storage/learning_to_perceive_EgoHOI-xbs-nus.pdf">slides</a>
+                <a href="https://github.com/xuboshen/EgoNCEpp">code</a> &nbsp;/&nbsp; <a href="https://openreview.net/pdf?id=M8gXSFGkn2">paper</a> &nbsp;/&nbsp; <a href="storage/learning_to_perceive_EgoHOI-xbs-nus.pdf">slides</a>
                 <p>We propose <strong>EgoNCE++</strong>, an asymmetric contrastive learning pretraining objective to solve the EgoVLMs' weakness in distinguishing HOI combinations with word variations.</p>
               </td>
             </tr>
             <!--/ ICLR2025 -->
 
-            <!-- 3DV 2025 -->
             <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <img src="images/motivation_SPAFormer.png" alt="SPAFormer" width="248" height="219" align="center">
-              </td>
-              <td width="75%" valign="middle">
-                <!-- <a href="https://drive.google.com/file/d/1YvRx-4hrZoCk-nl6OgVJZlHAqOiN5hWq/view?usp=sharing"> -->
-                  <span class="papertitle"><a href="https://arxiv.org/abs/2403.05874"> SPAFormer: Sequential 3D Part Assembly with Transformers</a></span>
-                <!-- </a> -->
-                <br>
-                <strong>Boshen Xu</strong>, <a href="http://zhengsipeng.github.io/">Sipeng Zheng</a>, <a href="http://www.jin-qin.com/">Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup></a>
-                <br>
-                <em>3DV</em>, 2025
-                <br>
-                <a href="https://xuboshen.github.io/SPAFormer/">project page</a>
-                /
-                <!-- /
-                <a href="https://dl.acm.org/doi/10.1145/3581783.3612484">paper</a> -->
-                <!-- / -->
-                <a href="https://github.com/xuboshen/SPAFormer">code</a>
-                /
-                <a href="https://arxiv.org/abs/2403.05874">arxiv</a>
-                <p>We present <strong>SPAFormer</strong>, a transformer-based framework that leverages assembly sequences constraints with three part encodings to address the combinatorial explosion challenge in 3D-PA task.</p>
-              </td>
-            </tr>
-            <!--/ 3DV 2025 -->
-
-            <!-- ECCV Workshop 2024 -->
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <img src="images/motivation_unvealing.png" alt="Unveiling Visual Biases" width="248" height="113" align="center">
-              </td>
-              <td width="75%" valign="middle">
-                <!-- <a href="https://drive.google.com/file/d/1YvRx-4hrZoCk-nl6OgVJZlHAqOiN5hWq/view?usp=sharing"> -->
-                  <span class="papertitle"><a href="https://arxiv.org/pdf/2409.06709"> Unveiling Visual Biases in Audio-Visual Localization Benchmarks </a></span>
-                <!-- </a> -->
-                <br>
-                <a href="https://openreview.net/profile?id=~Liangyu_Chen5">Liangyu Chen</a>, <a href="https://yuezih.github.io/">Zihao Yue</a>, <strong>Boshen Xu</strong>, <a href="http://www.jin-qin.com/">Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup></a>
-                <br>
-                <em>ECCV AVGenL Workshop</em>, 2024
-                <br>
-                <!-- <a href="https://xuboshen.github.io/POV/">project page</a> -->
-                <!-- /
-                <a href="https://dl.acm.org/doi/10.1145/3581783.3612484">paper</a> -->
-                <!-- / -->
-                <a href="https://arxiv.org/pdf/2409.06709">arxiv</a>
-                <p>We reveal that current audio-visual source localization benchmarks (VGG-SS, Epic-Sounding-Object) are easily hacked by vision-only models, therefore calling for a benchmark that requires more audio cues.</p>
-              </td>
-            </tr>
-            <!--/ ECCV Workshop 2024 -->
-
-            <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
                 <img src="images/motivation_POV.png" alt="POV" width="248" height="219" align="center">
               </td>
               <td width="75%" valign="middle">
@@ -246,16 +221,12 @@
                 <br>
                 <a href="https://xuboshen.github.io/POV/">project page</a>
                 <!-- /
-                <a href="https://dl.acm.org/doi/10.1145/3581783.3612484">paper</a> -->
-                /
-                <a href="https://github.com/xuboshen/pov_acmmm2023">code</a>
-                /
-                <a href="https://arxiv.org/abs/2403.05856">arxiv</a>
+                <a href="https://dl.acm.org/doi/10.1145/3581783.3612484">paper</a> --> &nbsp;/&nbsp; <a href="https://github.com/xuboshen/pov_acmmm2023">code</a> &nbsp;/&nbsp; <a href="https://arxiv.org/abs/2403.05856">arxiv</a>
                 <p>We propose <strong>POV</strong>, a view adaptation framework that enables transfer learning from multi-view third-person videos to egocentric videos.</p>
               </td>
             </tr>
             <tr>
-              <td style="padding:20px;width:25%;vertical-align:middle">
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
                 <img src="images/motivation_OpenCat.png" alt="OpenCat" width="248" height="160">
               </td>
               <td width="75%" valign="middle">
@@ -271,13 +242,43 @@
               </td>
             </tr>
 
+            <tr>
+              <td colspan="2" style="padding:10px 20px;">
+                <h3 style="margin:15px 0 0;">3D Vision</h3>
+              </td>
+            </tr>
+            <!-- 3DV 2025 -->
+            <tr>
+              <td class="paperimg" style="padding:20px;width:25%;vertical-align:middle">
+                <img src="images/motivation_SPAFormer.png" alt="SPAFormer" width="248" height="219" align="center">
+              </td>
+              <td width="75%" valign="middle">
+                <!-- <a href="https://drive.google.com/file/d/1YvRx-4hrZoCk-nl6OgVJZlHAqOiN5hWq/view?usp=sharing"> -->
+                  <span class="papertitle"><a href="https://arxiv.org/abs/2403.05874"> SPAFormer: Sequential 3D Part Assembly with Transformers</a></span>
+                <!-- </a> -->
+                <br>
+                <strong>Boshen Xu</strong>, <a href="http://zhengsipeng.github.io/">Sipeng Zheng</a>, <a href="http://www.jin-qin.com/">Qin Jin<sup style="font-size: 0.6em;">&dagger;</sup></a>
+                <br>
+                <em>3DV</em>, 2025
+                <br>
+                <a href="https://xuboshen.github.io/SPAFormer/">project page</a> &nbsp;/&nbsp; <!-- /
+                <a href="https://dl.acm.org/doi/10.1145/3581783.3612484">paper</a> -->
+                <!-- / -->
+                <a href="https://github.com/xuboshen/SPAFormer">code</a> &nbsp;/&nbsp; <a href="https://arxiv.org/abs/2403.05874">arxiv</a>
+                <p>We present <strong>SPAFormer</strong>, a transformer-based framework that leverages assembly sequences constraints with three part encodings to address the combinatorial explosion challenge in 3D-PA task.</p>
+              </td>
+            </tr>
+            <!--/ 3DV 2025 -->
+
+
+
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
+            <td style="padding:0 20px 20px 20px;width:100%;vertical-align:middle">
               <h2>Blog</h2>
 
-                <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+                <div class="sectionlist">
                   <ul>
                     <li>
                       <strong>2D模型的3D感知能力简述</strong>
@@ -302,30 +303,38 @@
                     </li>
                   </ul>
 
-                </tbody></table>
+                </div>
 
-              <h2>Awards</h2>
-              
-                <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+              <h2>Experience</h2>
+
+                <div class="sectionlist">
                   <ul>
-                    <li>2023-2025, First Class Scholarship for Ph.D Students, RUC, China</li>
-                    <li>2023, Outstanding Graduate, Sichuan, China</li>
-                    <li>2021, Tencent Special Scholarship, UESTC & Tencent</li>
-                    <li>2021, Second Prize of China Undergraduate Mathematical Contest in Modeling, China</li>
-                    <li>2020, National Scholarship, UESTC, China</li>
+                    <li>2026.01 - Now, LLM-Core, Xiaomi Inc.</li>
+                    <li>2025.05 - 2025.12, MiLM Plus, Xiaomi Inc.</li>
                   </ul>
 
-                </tbody></table>
+                </div>
+              <h2>Awards</h2>
+              
+                <div class="sectionlist">
+                  <ul>
+                    <li>2026, National Scholarship for Ph.D Students, RUC, China</li>
+                    <li>2023-2025, First Class Scholarship for Ph.D Students, RUC, China</li>
+                    <li>2023, Outstanding Graduate, Sichuan, China</li>
+                    <li>2020, National Scholarship for Undergraduate Students, UESTC, China</li>
+                  </ul>
+
+                </div>
               <h2>Services</h2>
               
-                <table width="100%" align="center" border="0" cellpadding="20"><tbody>
+                <div class="sectionlist">
                   <ul>
-                    <li>Conference Reviewer for CVPR, ECCV, SIGGRAPH, NeurIPS, ICLR, ACM MM, ACL, ACCV.</li>
-                    <li>Journal Reviewer for TOMM.</li>
+                    <li>Conference Reviewer for CVPR, ECCV, SIGGRAPH, SIGGRAPH Asia, NeurIPS, ICLR, ACM MM, ACL, ACCV.</li>
+                    <li>Journal Reviewer for IJCV, TOMM.</li>
                     <li>Teaching Assistant for Multimedia Application Technology (RUC 2024 Fall).</li>
                   </ul>
 
-                </tbody></table>
+                </div>
 
             </td>
           </tr>
